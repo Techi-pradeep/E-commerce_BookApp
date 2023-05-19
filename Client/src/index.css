@@ -3,3 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#root{
+    background-color: #081C29 !important;
+}
