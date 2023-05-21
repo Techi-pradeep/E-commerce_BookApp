@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <>
       
-    <header style={{position:"fixed"}}/>
+    <header />
    
     {/* CSS moudule --for soliving name clash and local scope  */} 
     {/* <div className={HomeStyle.text}>Home</div>   */}
@@ -16,7 +16,7 @@ const HomePage = () => {
     <MyCarousel />
     <HeroPart />
     <Author />
-    <Contact/>
+    <Contact />
     </>
     
   )

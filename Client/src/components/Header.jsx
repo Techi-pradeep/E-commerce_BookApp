@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 
 const Header = () => {
   return (
-    <Head className="navbar navbar-expand-lg navbar-sm bg-dark bg-gradient">
+    <Head className="navbar navbar-expand-lg navbar-sm bg-dark bg-gradient" style={{position:"fixed"}}>
       <NavLink to="/">
         {/* how we are accessing direct public folder ---./ by default */}
         <div className="logo" ><img src="./images/bookstore logo.jpeg" alt="logo image" /></div>
