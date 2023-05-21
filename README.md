@@ -1,12 +1,11 @@
 # E-commerce_BookApp  is under construction so plz mark after completion
  npm install @auth0/auth0-react
 
- <!-- MongooseServerSelectionError:              /                Error: querySrv ETIMEOUT _mongodb._tcp.projectm.gx5iuhc.mongodb.net =========>>>>>>>>>>>>>>>>>>>>>>open MongoDB and go Database Access and choose Your current IP address -->
+ <!-- MongooseServerSelectionError: / Error: querySrv ECONNREFUSED _mongodb._tcp.projectm.gx5iuhc.mongodb.net/Error: querySrv ETIMEOUT _mongodb._tcp.projectm.gx5iuhc.mongodb.net =========>>>>>>>>>>>>>>>>>>>>>>open MongoDB and go Database Access and choose Your current IP address -->
 
 
 
-client:
-npm install react-scripts@latest
+
 
 
 <!-- Root directory packages: -->
