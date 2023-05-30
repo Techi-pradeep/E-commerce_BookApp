@@ -1,191 +1,185 @@
 [{
     "name": "Ikigai",
-    "price": "₹1999",
-    "original_price": "₹2999",
+    "price": 1999,
+    "original_price":2999 ,
     "categories": ["Biography", "Thriller"],
     "rating": 4.5,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/895/9781786330895.jpg"
   },
   {
     "name": "It Ends With Us",
-    "price": "₹1499",
-    "original_price": "₹2499",
+    "price": 2344,
+    "original_price":3999 ,
     "categories": ["Romance"],
     "rating": 3.8,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/368/9781501110368.jpg"
+    
   },
   {
     "name": "Atomic habits",
-    "price": "₹999",
-    "original_price": "₹1499",
+    "price":345,
+    "original_price":999 ,
     "categories": ["Science Biography"],
     "rating": 4.2,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/831/9781847941831.jpg"
   },
   {
     "name": "The Psychology of Money",
-    "price": "₹599",
-    "original_price": "₹899",
+    "price":456,
+    "original_price":1299,
     "categories": ["Mystery", "Thriller"],
     "rating": 4.6,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/126/9780143452126.jpg"
   },
-  {
-    "name": "Do It Today",
-    "price": "₹2499",
-    "original_price": "₹3499",
-    "categories": ["Biography"],
-    "rating": 4.1,
-    "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/126/9780143452126.jpg"
-  },
+
   {
     "name": "Rich Dad Poor Dad",
-    "price": "₹899",
-    "original_price": "₹1299",
+    "price":789,
+    "original_price":1289 ,
     "categories": ["Fantasy"],
     "rating": 4.3,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/194/9781612680194.jpg"
   },
   {
     "name": "Service with Guru Nanak",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":678,
+    "original_price": 900,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/660/9788195388660.jpg"
   },
   {
     "name": "Rebel Heart Tarot",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":500,
+    "original_price":1300,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/583/9781801291583.jpg"
   },
   {
     "name": "Sapiens",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":899,
+    "original_price": 1300,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/088/9780099590088.jpg"
   },
   {
     "name": "A History of Ancient and Early",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":678,
+    "original_price": 1400,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/779/9788131716779.jpg"
   },
   {
     "name": "India's Ancient Past",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":467,
+    "original_price": 909,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/859/9780195687859.jpg"
   },
   {
     "name": "Brief History Of Time",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":456,
+    "original_price":999 ,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/219/9780553175219.jpg"
   },
   {
     "name": "Bharat Ka Prachin Itihas",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":700,
+    "original_price": 1200,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/305/9780199489305.jpg"
   },
   {
     "name": "History of Modern India",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":678,
+    "original_price":1399 ,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/554/9789390122554.jpg"
   },
   {
     "name": "Ambedkar's India",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":234,
+    "original_price":999 ,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/898/9789387022898.jpg"
   },
   {
     "name": "Discovery of India",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":899,
+    "original_price": 1300,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/031/9780143031031.jpg"
   },
   {
     "name": "History of Medieval India",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":899,
+    "original_price": 4000,
     "categories": ["History"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/547/9789390122547.jpg"
   },
   {
     "name": "Ugly Love",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":467,
+    "original_price":999 ,
     "categories": ["Love"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/188/9781476753188.jpg"
   },
   {
     "name": "One Day, Life Will Change",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":478,
+    "original_price": 989,
     "categories": ["Love"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/846/9789389717846.jpg"
   },
   {
     "name": "The Love Hypothesis",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":799,
+    "original_price":1600 ,
     "categories": ["Love","Romance"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/823/9780593336823.jpg"
   },
   {
     "name": "You Only Live Once: One for",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":457,
+    "original_price":999 ,
     "categories": ["Love","Romance"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/581/9780143453581.jpg"
   },
   {
     "name": "The Forty Rules of Love",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":467,
+    "original_price":1300 ,
     "categories": ["Love","Romance"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/939/9780241972939.jpg"
   },
   {
     "name": "Falling in Love Again",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":899,
+    "original_price": 2000,
     "categories": ["Love","Romance"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/939/9780241972939.jpg"
   },
   {
     "name": "Grandma's Bag Of Stories",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":989,
+    "original_price":1700 ,
     "categories": ["Fiction","Fantasy"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/623/9780143333623.jpg"
@@ -193,112 +187,112 @@
 
   {
     "name": "Best of Children's Classics",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":677,
+    "original_price": 1300,
     "categories": ["Fiction","Fantasy"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/008/9789389432008.jpg"
   },
   {
     "name": "Harry Potter and the",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":1567,
+    "original_price":4099 ,
     "categories": ["Fiction","Fantasy","Thriller"],
     "rating": 4.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/652/9781408855652.jpg"
   },
   {
     "name": "Harry Potter and the Chamber of secrets",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":1609,
+    "original_price": 5799,
     "categories": ["Fiction","Fantasy"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/669/9781408855669.jpg"
   },
   {
     "name": "The Magic Of The Lost Temple",
-    "price": "₹799",
-    "original_price": "₹1256",
+    "price":688,
+    "original_price": 1399,
     "categories": ["Fiction"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/166/9780143333166.jpg"
   },
   {
     "name": "The Midnight Library",
-    "price": "₹551",
-    "original_price": "₹1256",
+    "price":1299,
+    "original_price": 2699,
     "categories": ["Fiction"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/720/9781786892720.jpg"
   },
   {
     "name": "All the Light We Cannot See",
-    "price": "₹551",
-    "original_price": "₹1256",
+    "price":329,
+    "original_price":999 ,
     "categories": ["Fiction","Fantasy"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/428/9780008172428.jpg"
   },
   {
     "name": "Harry Potter and the Goblet ",
-    "price": "₹551",
-    "original_price": "₹1251",
+    "price":1400,
+    "original_price": 3499,
     "categories": ["Fiction"],
     "rating": 2.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/683/9781408855683.jpg"
   },
   {
     "name": "Harry Potter and the Prisoner ",
-    "price": "₹551",
-    "original_price": "₹1251",
+    "price":2299,
+    "original_price":3300 ,
     "categories": ["Fiction","Fantasy"],
     "rating": 4.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/676/9781408855676.jpg"
   },
   {
     "name": "A Man Called Ove",
-    "price": "₹551",
-    "original_price": "₹1251",
+    "price":789,
+    "original_price":1469 ,
     "categories": ["Fiction"],
     "rating": 3.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/815/9781444775815.jpg"
   },
   {
     "name": "Wings of Fire",
-    "price": "₹551",
-    "original_price": "₹1451",
+    "price":499,
+    "original_price":999 ,
     "categories": ["Biography"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/466/9788173711466.jpg"
   },
   {
     "name": "The Story of My Experiments",
-    "price": "₹799",
-    "original_price": "₹1451",
+    "price":4577,
+    "original_price": 5999,
     "categories": ["Biography"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/118/9788172343118.jpg"
   },
   {
     "name": "History of Modern India",
-    "price": "₹699",
-    "original_price": "₹1451",
+    "price":470,
+    "original_price": 1299,
     "categories": ["Biography"],
     "rating": 3.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/845/9788125036845.jpg"
   },
   {
     "name": "Win All Your Battles",
-    "price": "₹499",
-    "original_price": "₹1451",
+    "price":589,
+    "original_price": 999,
     "categories": ["Biography"],
     "rating": 2.9,
     "image": "https://d2g9wbak88g7ch.cloudfront.net/productimages/mainimages/817/9789394407817.jpg"
   },
   {
     "name": "JEET AAPKI HINDI OF YOU",
-    "price": "₹799",
-    "original_price": "₹1099",
+    "price":457,
+    "original_price":899 ,
     "categories": ["Biography"],
     "rating": 4.9,
     "image": "https://www.bookswagon.com/productimages/mainimages/841/9789382951841.jpg"

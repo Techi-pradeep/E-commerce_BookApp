@@ -1,4 +1,6 @@
-// import React from 'react';
+import React, {useState} from 'react';
+
+
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
@@ -6,8 +8,14 @@ import "bootstrap/dist/css/bootstrap.css"; /* for using bootstrap Classnam="....
 import { NavLink } from "react-router-dom";
 import { BsCartCheck } from "react-icons/Bs"; /*Bs comes from 1st two leters of icon name */
 
+
+
+
 const Navbar = () => {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  // const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
+
+
   return (
     <>
       <Wrapper>
@@ -30,7 +38,7 @@ const Navbar = () => {
               <span className="cart-total-items">10</span>
             </NavLink>
           </li>
-
+{/* 
           {isAuthenticated ? (
             <li>
               <button className="btn btn-outline-danger ms-2 text-white"
@@ -46,8 +54,20 @@ const Navbar = () => {
               <button className="btn btn-outline-success ms- text-white"
               onClick={() => loginWithRedirect()}>Log In</button>
             </li>
-          )}
+          )} */}
+
+          <li>
+            <NavLink to="/SignUp">SignUp</NavLink>
+          </li>
+          <li>
+            <NavLink to="/LogIn">LogIn</NavLink>
+          </li>
+
         </ul>
+
+
+
+
       </Wrapper>
     </>
   );

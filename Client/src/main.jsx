@@ -1,9 +1,12 @@
-// import React from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import { CartProvider } from './CartContext.jsx';
 import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,9 +17,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       redirect_uri: window.location.origin
     }}
   >
-
-
-    <App />
+{/* here App component is wrapped so that CartContext can access globally throughout the application */}
+<CartProvider>
+  <App />
+</CartProvider>
+    
 
 
   </Auth0Provider>,

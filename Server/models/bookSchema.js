@@ -31,6 +31,12 @@ const BooksApiSchema = new mongoose.Schema({
     format: "uri",
     required: true,
   },
+
+  CartQuantity:{
+    type:Number,
+    required: true,
+    default: 0,
+  }
   // createdAt: {
   //   type: "string",
   //   format: "date-time",
