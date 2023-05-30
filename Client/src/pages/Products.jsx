@@ -1,3 +1,4 @@
+// Indian Rupee symbol html code:   --> &#8377;   {semicolon must be added at last}
 import { useEffect, useState } from "react";
 
 // UseEffect hook reload our data once after rendering
@@ -9,7 +10,8 @@ import Loading from "../components/Loading";
 import styled from "styled-components";
 
 // useFetchBooks is a custom hook created in hooks folder 
-import useFetchBooks from "../hooks/useFetchBook";
+import {useFetchBooks }from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const books = useFetchBooks("products");
@@ -35,18 +37,18 @@ const Products = () => {
                     className={BookCardStyle.text}
                     style={{ color: "#35e865" }}
                   >
-                    {item.price}
+                    &#8377;{item.price}
                   </p>
                   <p
                     className={BookCardStyle.text}
                     style={{ color: "#d65249", textDecoration: "line-through" }}
                   >
-                    {item.original_price}
+                   &#8377;{item.original_price}
                   </p>
                 </div>
                 <p className={BookCardStyle.text}>Ratings: {item.rating}</p>
                 <div className={BookCardStyle.button}>
-                  <a
+                  {/* <a
                     href={`/single_product/${item._id}`}
                     target="_blank"
                     rel="noreferrer"
@@ -54,7 +56,11 @@ const Products = () => {
                     <button type="button" className="btn btn-primary">
                       Buy Now
                     </button>
-                  </a>
+                  </a> */}
+
+                  <Link to={`/single_product/${item._id}`} >  <button type="button" className="btn btn-primary">
+                      Buy Now
+                    </button></Link>
                 </div>
               </div>
             </div>
