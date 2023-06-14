@@ -8,18 +8,28 @@ const CartProvider = ({ children }) => {
 
 
   const [items, setItems] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1);
+  };
+
+ 
 
 
   // Adding pertiuclar book in array with previous items
   const addToCart = (item) => {
     console.log("addToCart", item);
     setItems((prevItems) => [...prevItems, item]);  /**updating items variable which holds array */
+    handleAddToCart(); /* increase cart no on clicking add to cart button*/
   };
 
 
 
   const removeFromCart = (itemId) => {
-    setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
+    if (cartCount > 0) {
+      setCartCount(cartCount - 1);}
+    return setItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
   };
  
 
@@ -30,7 +40,7 @@ const CartProvider = ({ children }) => {
 
 
   return (
-    <CartContext.Provider value={{ items, setItems, addToCart,removeFromCart}}>
+    <CartContext.Provider value={{ items, setItems, addToCart,removeFromCart, cartCount,setCartCount}}>
       {children}
     </CartContext.Provider>
   );

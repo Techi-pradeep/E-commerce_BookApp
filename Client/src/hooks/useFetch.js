@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { API_CONFIG } from "../config";
+import { API_CONFIG } from "../config.js";
 
 /**Fetching all Items from cluster */
 const useFetchBooks = (endpoint) => {
@@ -28,26 +28,78 @@ const useFetchOneBookByID = (id) => {
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    const fetchBook = async () => {
-      try {
-        //const response = await axios.get(`http://localhost:4023/products`);
-        const response = await axios.get(`${API_CONFIG.BASE_URL}/products`);
-        const data = response.data;
-        // Filter the data array to find the book with the matching _id
-        const SingleBookData = data.find((item) => item._id === id);
-        setBook(SingleBookData);
-      } catch (error) {
-        console.error("Error fetching book:", error);
-      }
-    };
-
     fetchBook();
   }, [id]);
+
+  const fetchBook = async () => {
+    try {
+      const response = await axios.get(`${API_CONFIG.BASE_URL}/products`);
+      const data = response.data;
+      // Filter the data array to find the book with the matching _id
+      const SingleBookData = data.find((item) => item._id === id);
+      setBook(SingleBookData);
+    } catch (error) {
+      console.error("Error fetching book:", error);
+    }
+  };
 
   return book;
 };
 
-export { useFetchOneBookByID, useFetchBooks };
+// fetching filtered books according searchQuery
+const useFilteredFetchBooks = (endpoint, searchQuery) => {
+  console.log("usefilteredFetchBooks called ", searchQuery);
+  const [filteredBooks, setFilteredBooks] = useState("");
+
+  useEffect(() => {
+    filteredFetchBooks();
+  }, [searchQuery]);
+
+  const filteredFetchBooks = async () => {
+    try {
+      const response = await axios.get(
+        `${API_CONFIG.BASE_URL}/${endpoint}?search=${searchQuery}`
+      );
+      const filteredData = response.data;
+      setFilteredBooks(filteredData);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  return filteredBooks;
+};
+
+/** Fetching orderDetails from cluster or MongoDB database via a custom hook */
+const usefetchOrderDetails = (endpoint) => {
+  const [orderData, setOrderData] = useState();
+
+
+  // the function fetch data from DB must called inside useEffect hook      
+  useEffect(() => {
+    fetchOrderDetailsHistory();
+  }, [endpoint]);
+
+  const fetchOrderDetailsHistory = async () => {
+    try {
+      const response = await axios.get(`${API_CONFIG.BASE_URL}/${endpoint}`);/**check Network this line is specified by metioning useFetch */
+      console.log("usefetchOrderDetails hook responce",response);
+      const data = response.data;
+      console.log("usefetchOrderDetails hook data",data);
+      setOrderData(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  return orderData;
+};
+
+export {
+  useFetchOneBookByID,
+  useFetchBooks,
+  usefetchOrderDetails,
+  useFilteredFetchBooks,
+};
 
 /** following code when we direct use
  *   const url =  "http://localhost:{Portno backend}/products"

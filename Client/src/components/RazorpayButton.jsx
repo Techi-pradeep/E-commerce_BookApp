@@ -1,47 +1,107 @@
-import React, { useState } from "react";
+// ----------how to use .env razorpay key dynamically here--------------------------------
+
+// // =======================
+// import dotenv from "dotenv";
+// dotenv.config();
+
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import "react-razorpay";
 import axios from "axios";
-// import { API_CONFIG } from "../config";
-import RazorpayCheckout from "react-razorpay";
 
-const RazorpayButton = ({ totalAmount }) => {
+import { API_CONFIG } from "../config";
+import usePostData from "../hooks/usePostData";
+
+import { CartContext } from "../CartContext";
+import AuthContext from "../auth/AuthContext";
+
+const RazorpayButton = ({ totalAmount, quantities }) => {
+  const navigate = useNavigate();
   const [orderId, setOrderId] = useState("");
+  const { items, setItems, cartCount, setCartCount } = useContext(CartContext);
+  
+  const { authUser } = useContext(AuthContext);
+  const userId = authUser._id;
+    console.log(authUser)
 
+  useEffect(() => {
+    createOrder();
+  }, []);
 
   /**The createOrder function is called when the user clicks on the "Create Order" button. It sends a POST request to the /create-order endpoint on the server and sets the orderId state with the response data. */
   const createOrder = async () => {
     try {
-      // ${API_CONFIG.BASE_URL}/${endpoint}
-      // const response = await axios.post(`${API_CONFIG.BASE_URL}/${create-order}`, {
-      const response = await axios.post("http://localhost:8080/create-order", {
+      const response = await axios.post(`${API_CONFIG.BASE_URL}/createOrder`, {
         totalAmount: totalAmount,
       });
-
+      // console.log(response);
       setOrderId(response.data.orderId);
     } catch (error) {
       console.error("Error creating order:", error);
     }
   };
 
-
   /**
    * The handlePayment function is called when the user clicks on the "Pay with Razorpay" button. It creates a new instance of the Razorpay checkout with the specified options and opens the checkout form.
    */
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     const options = {
+      // key: process.env.RAZOR_PAY_KEY_ID, // Replace with your actual Razorpay Key ID
       key: "rzp_test_LECvIyhGviKzTp", // Replace with your actual Razorpay Key ID
       amount: totalAmount * 100, //  Razorpay accepts the amount in paise or the smallest currency unit.
       currency: "INR",
-      name: "Acme Corp",
+      name: "BookVault", // Replace with your brand name
       description: "Test Transaction",
       image: "./images/bookstore logo.jpeg",
       order_id: orderId,
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        console.log(response);
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        /**handler will run when payment done successful */
+        try {
+          /*the handler function of RazorpayButton component, after successful payment, get the cart items from the state and send it to the backend for processing. */
+          const cartData = items.map((item) => ({
+            itemId: item._id,
+            name: item.name,
+            price: item.price,
+            quantity: quantities && quantities[item._id] ? quantities[item._id] : 1,
+            // quantity: quantities ? Math.max(1, quantities[item._id]) : 1,
+
+          }));
+          console.log(items);
+          console.log("cartdataDetails", cartData);
+          console.log("RazorpayQuantities", quantities);
+
+          const paymentDataWithCarts = {
+            paymentId: response.razorpay_payment_id,
+            orderId: response.razorpay_order_id,
+            signature: response.razorpay_signature,
+            // Additional data if needed
+            cartData: cartData,
+            userId: userId,
+          };
+          // After successful order creation, clear the cart items and cartCount from the state.
+          setItems([]);
+          setCartCount(0);
+
+          const res = usePostData("paymentSuccess", paymentDataWithCarts);
+          // console.log("usePostData called");
+          // console.log(res);
+
+          // Handle the success response from the backend if necessary
+        } catch (error) {
+          console.error("Error processing payment:", error);
+          // Handle the error response from the backend if necessary
+        }
+
+        /**after successful payment orders page will open */
+        navigate(`/orders/${userId}`)
       },
-      // customer bedefault details
+
+      // customer bydefault details
       prefill: {
         name: "Piyush Garg",
         email: "youremail@example.com",
@@ -54,7 +114,7 @@ const RazorpayButton = ({ totalAmount }) => {
         color: "#3399cc",
       },
     };
-
+    console.log(items);
     const rzp1 = new window.Razorpay(options);
 
     rzp1.on("payment.failed", function (response) {
@@ -71,9 +131,13 @@ const RazorpayButton = ({ totalAmount }) => {
   };
 
   return (
-    <div className="App" style={{display:'flex', justifyContent:"space-between"}}>
-      <button onClick={createOrder} className="btn btn-primary">Create Order</button>
-      <button onClick={handlePayment} className="btn btn-primary">Pay with Razorpay</button>
+    <div
+      className="App"
+      style={{ display: "flex", justifyContent: "space-between" }}
+    >
+      <button onClick={handlePayment} className="btn btn-primary">
+        Pay with Razorpay
+      </button>
     </div>
   );
 };

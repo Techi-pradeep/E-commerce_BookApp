@@ -1,27 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from "react";
+import { CartContext } from "../CartContext";
 
+import AuthContext from "../auth/AuthContext";
 
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
 import "bootstrap/dist/css/bootstrap.css"; /* for using bootstrap Classnam="...." CSS */
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BsCartCheck } from "react-icons/Bs"; /*Bs comes from 1st two leters of icon name */
-
-
-
 
 const Navbar = () => {
   // const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { authenticated,  logout } = useContext(AuthContext);
+  const { cartCount } = useContext(CartContext);
 
 
-
+       console.log("Navbar", authenticated)
   return (
     <>
       <Wrapper>
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/home">Home</NavLink>
           </li>
           <li>
             <NavLink to="/about">About</NavLink>
@@ -35,10 +36,11 @@ const Navbar = () => {
           <li>
             <NavLink to="/cart" className="cart">
               <BsCartCheck className="cart_icon" />
-              <span className="cart-total-items">10</span>
+              <span className="cart-total-items">{cartCount}</span>
             </NavLink>
           </li>
-{/* 
+
+          {/* //when using "Auth0" for login and logout purpose
           {isAuthenticated ? (
             <li>
               <button className="btn btn-outline-danger ms-2 text-white"
@@ -56,18 +58,16 @@ const Navbar = () => {
             </li>
           )} */}
 
-          <li>
-            <NavLink to="/SignUp">SignUp</NavLink>
-          </li>
-          <li>
-            <NavLink to="/LogIn">LogIn</NavLink>
-          </li>
-
+          {authenticated ? (
+            <button className="btn btn-danger" onClick={logout}>
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="btn btn-success">
+              Log-In
+            </Link>
+          )}
         </ul>
-
-
-
-
       </Wrapper>
     </>
   );
@@ -133,12 +133,12 @@ const Wrapper = styled.nav`
     top: 0;
     left: 1rem;
   }
-  .active{
-     border:2 px solid blue;
-     background-color: blue;
-     color: white;
-     border-radius: .5rem;
-     padding:0.2rem 0.5rem;
+  .active {
+    border: 2 px solid blue;
+    background-color: blue;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
   }
 `;
 

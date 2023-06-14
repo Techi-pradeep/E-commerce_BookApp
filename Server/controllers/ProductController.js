@@ -1,6 +1,7 @@
 /* 
    folder or static method- name in lowercase or camelCase 
    Class name in PascalCase or Uppercase
+   import model with .js extension -------otherwise---Error moudle not found ----
  */
 
 import Card from "../models/bookSchema.js";
