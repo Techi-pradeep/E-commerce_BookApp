@@ -1,140 +1,82 @@
-import { CartContext } from "../CartContext";
-
 import React from "react";
 import styled from "styled-components";
 import NoOrderHistory from "../components/NoOrderHistory";
-
-
-
-// -----------Adding data after successful completion of payment
-// const addOrderToHistory = (orderData) => {
-//   const { addOrderToHistory } = useContext(CartContext);
-//   addOrderToHistory(orderData);
-// };
+// custom hook to fetch data after matching userId
+import { usefetchOrderDetails } from "../hooks/useFetch";
+import { useParams } from "react-router-dom";
 
 const OrderHistory = () => {
-  const orders = [
-    {
-      orderId: "12345",
-      orderDate: "2023-05-20",
-      items: [
-        { itemId: "1", name: "Item 1", quantity: 2, price: "$10.00" },
-        { itemId: "2", name: "Item 2", quantity: 1, price: "$20.00" },
-        { itemId: "3", name: "Item 3", quantity: 3, price: "$5.00" },
-      ],
-      totalAmount: "$50.00",
-      status: "Delivered",
-    },
-    // Add more order objects as needed
-    {
-        orderId: "12345",
-        orderDate: "2023-05-20",
-        items: [
-          { itemId: "1", name: "Item 1", quantity: 2, price: "$10.00" },
-          { itemId: "2", name: "Item 2", quantity: 1, price: "$20.00" },
-          { itemId: "3", name: "Item 3", quantity: 3, price: "$5.00" },
-        ],
-        totalAmount: "$50.00",
-        status: "Delivered",
-      },
-      {
-        orderId: "12345",
-        orderDate: "2023-05-20",
-        items: [
-          { itemId: "1", name: "Item 1", quantity: 2, price: "$10.00" },
-          { itemId: "2", name: "Item 2", quantity: 1, price: "$20.00" },
-          { itemId: "3", name: "Item 3", quantity: 3, price: "$5.00" },
-        ],
-        totalAmount: "$50.00",
-        status: "Delivered",
-      },
-      {
-        orderId: "12345",
-        orderDate: "2023-05-20",
-        items: [
-          { itemId: "1", name: "Item 1", quantity: 2, price: "$10.00" },
-          { itemId: "2", name: "Item 2", quantity: 1, price: "$20.00" },
-          { itemId: "3", name: "Item 3", quantity: 3, price: "$5.00" },
-        ],
-        totalAmount: "$50.00",
-        status: "Delivered",
-      },
-  ];
- 
-
-// const orders = [];
+  const { userId } = useParams();
+  const orderedItems = usefetchOrderDetails(`api/orderDetails/${userId}`);
+  console.log(orderedItems);
   return (
-    <OrderSection>
-      <OrderHistoryContainer>
-        <h2 style={{ textAlign: 'center',color:"#B988C1" }}>Order History</h2>
-        {orders.length === 0 ? (
-          <NoOrderHistory />
-        ) : (
-            <table>
-              <thead>
-                <tr>
-                  <th>Sr. No</th>
-                  <th>Order ID</th>
-                  <th>Order Date</th>
-                  <th>Product Name</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {orders.map((order, index) => (
-                  <tr key={order.orderId}>
-                    <td>{index + 1}</td>
-                    <td>{order.orderId}</td>
-                    <td>{order.orderDate}</td>
-                    <td>
-                      <ul>
-                        {order.items.map((item) => (
-                          <li key={item.itemId}>
-                            {item.name}
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                    <td>
-                      <ul>
-                        {order.items.map((item) => (
-                          <li key={item.itemId}>
-                            {item.price}
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                    <td>
-                      <ul>
-                        {order.items.map((item) => (
-                          <li key={item.itemId}>
-                            {item.quantity}
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                    <td>{order.status}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-      </OrderHistoryContainer>
-    </OrderSection>
+<>
+     <OrderHistoryContainer>
+      <h2 style={{ textAlign: "center", color: "#B988C1" }}>Order History</h2>
+      {/* orderedItems && ---avoiding null error */}
+      {orderedItems && orderedItems.length === 0 ? (
+        <NoOrderHistory />
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Sr. No</th>
+              <th>Order ID</th>
+              <th>Order Date & Time</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orderedItems && orderedItems.map((order, index) => (
+              <tr key={order.orderId}>
+                <td>{index + 1}</td>
+                <td>{order.orderId}</td>
+                <td>{order.orderDate}</td>
+                <td>
+                  <ul>
+                    {order.cartData.map((item) => (
+                      <li key={item._id}>{item.name}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {order.cartData.map((item) => (
+                      <li key={item._id}>
+                        &#8377;
+                        {item.price}
+                      </li>
+                    ))}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {order.cartData.map((item) => (
+                      <li key={item._id}>{item.quantity}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td>Payment successful </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </OrderHistoryContainer>
+  </>
   );
 };
 
-const OrderSection = styled.div``;
-
-
+// const OrderSection = styled.div``;
 
 const OrderHistoryContainer = styled.div`
   padding: 20px;
   padding-top: 5rem;
   min-height: 100vh;
-  color: #fff;
+  color: black;
 
   h2 {
     margin-bottom: 10px;
@@ -155,11 +97,12 @@ const OrderHistoryContainer = styled.div`
     th,
     td {
       padding: 12px;
-      text-align: left;
+      ${"" /* text-align: left; */}
+      text-align: center;
     }
 
     th {
-      background-color: #7C3190;
+      background-color: #7c3190;
       color: #fff;
     }
 
@@ -188,7 +131,5 @@ const OrderHistoryContainer = styled.div`
     margin: 0 auto;
   }
 `;
-
-
 
 export default OrderHistory;

@@ -4,10 +4,11 @@ import App from './App.jsx'
 import './index.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 import { CartProvider } from './CartContext.jsx';
 import { Auth0Provider } from "@auth0/auth0-react";
+import { SearchProvider } from './SearchFeature/SearchContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Auth0Provider
@@ -18,10 +19,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     }}
   >
 {/* here App component is wrapped so that CartContext can access globally throughout the application */}
+
+  <SearchProvider>
 <CartProvider>
   <App />
 </CartProvider>
-    
+    </SearchProvider>
 
 
   </Auth0Provider>,

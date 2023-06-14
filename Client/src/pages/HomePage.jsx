@@ -7,12 +7,7 @@ import Contact from "./Contact"
 const HomePage = () => {
   return (
     <>
-      
-    <header />
-   
-    {/* CSS moudule --for soliving name clash and local scope  */} 
-    {/* <div className={HomeStyle.text}>Home</div>   */}
-    
+    {/* header & footer are already fixed for all pages in app.jsx */}
     <MyCarousel />
     <HeroPart />
     <Author />

@@ -1,20 +1,32 @@
 // Indian Rupee symbol html code:   --> &#8377;   {semicolon must be added at last}
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 // UseEffect hook reload our data once after rendering
 // useState is used for storing cluster collection in Array of objects
 
-//CSS module is used for avoiding nameclashig
-import BookCardStyle from "../styles/BookCard.module.css";
-import Loading from "../components/Loading";
-import styled from "styled-components";
-
-// useFetchBooks is a custom hook created in hooks folder 
-import {useFetchBooks }from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { SearchContext } from "../SearchFeature/SearchContext";
+
+//CSS module is used for avoiding nameclashig
+import BookCardStyle from "../styles/BookCard.module.css";
+import styled from "styled-components";
+
+import Loading from "../components/Loading";
+
+// useFetchBooks is a custom hook created in hooks folder 
+import {useFetchBooks ,useFilteredFetchBooks}from "../hooks/useFetch";
+
 const Products = () => {
-  const books = useFetchBooks("products");
+  
+  let allBooks = useFetchBooks("products");
+
+  const {filteredBooks} = useContext(SearchContext);
+  // const filteredBooks = useFilteredFetchBooks("products",`${searchQuery}`);
+  console.log(filteredBooks);
+
+  allBooks = filteredBooks?filteredBooks:allBooks;
 
   return (
    
@@ -23,9 +35,9 @@ const Products = () => {
        
       >
         {/* bookcontainer style is creating cards using display : grid */}
-        {books.length === 0 ?(<Loading/>)
+        {allBooks.length === 0 ?(<Loading/>)
         :
-        (books.map((item) => (
+        (allBooks.map((item) => (
            
           <div className={BookCardStyle.container} key={item._id}>
             <div className={BookCardStyle.card}>
@@ -63,7 +75,9 @@ const Products = () => {
                     </button></Link>
                 </div>
               </div>
+            
             </div>
+         
           </div>
         )))}
       </div>
@@ -126,52 +140,5 @@ marginRight:4rem;
 // - Better browser compatibility, including support for older browsers
 // - Additional features such as request/response interceptors and cancellation support.  */
 
-//   return (
-//     <>
-//       <div
-//         className={BookCardStyle.bookcontainer}
-//         // style={{ marginLeft: "4rem" }}
-//       >
-//         {/* bookcontainer style is creating cards using display : grid */}
-//         {books.length === 0 ?(<Loading/>):(books.map((item) => (
-//           <div className={BookCardStyle.container} key={item._id}>
-//             <div className={BookCardStyle.card}>
-//               <img src={item.image} alt="" />
-//               <div className={BookCardStyle.body}>
-//                 <h5 className={BookCardStyle.title}>{item.name}</h5>
-//                 <div className={BookCardStyle.price}>
-//                   <p
-//                     className={BookCardStyle.text}
-//                     style={{ color: "#35e865" }}
-//                   >
-//                     {item.price}
-//                   </p>
-//                   <p
-//                     className={BookCardStyle.text}
-//                     style={{ color: "#d65249", textDecoration: "line-through" }}
-//                   >
-//                     {item.original_price}
-//                   </p>
-//                 </div>
-//                 <p className={BookCardStyle.text}>Ratings: {item.rating}</p>
-//                 <div className={BookCardStyle.button}>
-//                   <a
-//                     href={`/single_product/${item._id}`}
-//                     target="_blank"
-//                     rel="noreferrer"
-//                   >
-//                     <button type="button" className="btn btn-primary">
-//                       Buy Now
-//                     </button>
-//                   </a>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         )))}
-//       </div>
-//     </>
-//   );
-// };
 
 export default Products;

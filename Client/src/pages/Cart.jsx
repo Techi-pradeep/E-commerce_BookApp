@@ -3,27 +3,34 @@ import RazorpayButton from '../components/RazorpayButton';
 
 
 
-
+import AuthContext from '../auth/AuthContext';
 
 
 // ============================================
 import {Link} from "react-router-dom"
-import { useState, useContext } from "react";
+import { useState, useContext,useEffect } from "react";
 import styled from "styled-components";
 import { CartContext } from "../CartContext";
 const Cart = () => {
   /**----------------------Dynamic Data getting by useContext hook----------------------------- */
-  const { items ,removeFromCart } = useContext(CartContext);
+  const { items, removeFromCart,cartCount,setCartCount } = useContext(CartContext);
   console.log("AddtoCart---items", items);
 
   const [quantities, setQuantities] = useState({});
-
+/** authuser for getting specific user order history */
+  const { authUser } = useContext(AuthContext);
+ const userId = authUser._id;
+  // updating CartCount according to no of cards in cart.jsx
+  useEffect(() =>{
+    setCartCount(items.length);
+  },[items])
+console.log(cartCount)
   const handleQuantityChange = (itemId, newQuantity) => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [itemId]: newQuantity,
     }));
-    console.log(quantities)
+    console.log("CartQuantities",quantities)
   };
 
   const handleDelete = (itemId) => {
@@ -34,7 +41,7 @@ const Cart = () => {
       return newQuantities;
     });
   };
-// ------------------------Razorpay function-------
+
 
   /**--------------------------------used with static  data ------------------------------------------------- */
 
@@ -107,7 +114,7 @@ const Cart = () => {
       <OrdersButton>
       
 
-        <div><Link to="/orders">
+        <div><Link to={`/orders/${userId}`}>
           <button className="btn btn-primary">Order History</button></Link>
           </div>
         <div> <Link to="/products">  <button className="btn btn-primary">BookStore</button></Link></div>
@@ -214,7 +221,7 @@ const Cart = () => {
                   </div>
                 </div>
                 {/* here component has  two props: amount (the total amount to be paid) and onSuccess (a callback function that will be called when the payment is successful). */}
-                <RazorpayButton totalAmount={calculateTotalAmount()} />
+                <RazorpayButton totalAmount={calculateTotalAmount()} quantities={quantities} />
                
               </div>
             </div>

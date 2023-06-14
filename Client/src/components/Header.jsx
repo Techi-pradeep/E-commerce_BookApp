@@ -1,12 +1,19 @@
-// import React from 'react'
+// import React from 'reacti
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.css"; /* for using bootstrap Classnam="...." CSS */
 import { BsSearch} from "react-icons/Bs";
 
 import { NavLink } from "react-router-dom";
 import Navbar from "./Navbar";
+import { useState,useContext } from "react";
+
+
+import {SearchContext} from "../SearchFeature/SearchContext"
+ 
 
 const Header = () => {
+  const{searchQuery, setSearchQuery,handleSubmit} = useContext(SearchContext)
+ 
   return (
     <Head className="navbar navbar-expand-lg navbar-sm bg-dark bg-gradient" style={{position:"fixed"}}>
       <NavLink to="/">
@@ -14,10 +21,17 @@ const Header = () => {
         <div className="logo" ><img src="./images/bookstore logo.jpeg" alt="logo image" /></div>
       </NavLink>
       <div className="position-relative">
-        <input type="text" className="form-control w-100" placeholder="Search" />
-        <BsSearch className="search-icon" />
+        <input type="text" className="form-control w-100" name="search"  id="search" placeholder="Search Books" 
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+
+        />
+        <BsSearch onClick={handleSubmit}className="search-icon" />
       </div>
-      <Navbar />
+    
+    <Navbar />
+    
+
     </Head>
   );
 };
