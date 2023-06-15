@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 // }));
 
 // Database Connection
-connectDB(MONGODB_URL);
+// connectDB(MONGODB_URL);
 // registering all routes
 app.use("/", User);
 
@@ -67,4 +67,5 @@ const start = async () => {
     console.log(err);
   }
 };
-start();
+// start();
+ connectDB(MONGODB_URL).then(start()).catch(console.log("connect failed"));
