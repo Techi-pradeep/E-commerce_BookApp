@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 
 
-import connectDB from "./config/connectdb.js";
+import connectDB from "./Config/connectdb.js";
 import User from "./routes/customer.js";
 
 const app = express();
