@@ -64,11 +64,12 @@ const SignUp = () => {
       // console.log(response);
 
       if (response.message === "User registered successfully") {
-        console.log(response)
+        console.log(response);
         toast.success(response.message);
-        // Redirect to another page or perform any other actions upon successful signup
-        setTimeout(() =>{ navigate("/login")}, 4000);/**setTimeout logic runs after some time so that react toastify can show message */
-       
+        // Redirect to another page  upon successful signup
+        setTimeout(() => {
+          navigate("/login");
+        }, 4000); /**setTimeout logic runs after some time so that react toastify can show message */
       } else {
         toast.error("Signup failed. Please try again.");
       }

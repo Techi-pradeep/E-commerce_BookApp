@@ -13,7 +13,7 @@ import {SearchContext} from "../SearchFeature/SearchContext"
 
 const Header = () => {
   const{searchQuery, setSearchQuery,handleSubmit} = useContext(SearchContext)
- 
+ console.log(' searchQuery header', searchQuery)
   return (
     <Head className="navbar navbar-expand-lg navbar-sm bg-dark bg-gradient" style={{position:"fixed"}}>
       <NavLink to="/">
@@ -26,7 +26,7 @@ const Header = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
 
         />
-        <BsSearch onClick={handleSubmit}className="search-icon" />
+        <BsSearch   onClick={handleSubmit}className="search-icon" />
       </div>
     
     <Navbar />
@@ -51,11 +51,13 @@ const Head = styled.header`
     border-radius: 50%;
     padding: 0.5rem;
   }
+  ${'' /*Position search icon----------  */}
   .search-icon {
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+  background-color: blue;
 }
 
 `;
