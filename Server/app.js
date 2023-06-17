@@ -19,7 +19,13 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 
 // CORS Policy  - used for connecting backend to frontend smoothly---avoiding errors while connecting
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://creative-piroshki-9c860e.netlify.app', // Replace with your frontend domain
+    methods: ['GET', 'POST'], // Specify the allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed request headers
+  })
+);
 
 // solving error in new version
 import mongoose from "mongoose";
