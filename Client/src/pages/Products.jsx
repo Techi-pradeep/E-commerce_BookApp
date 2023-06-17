@@ -14,19 +14,19 @@ import BookCardStyle from "../styles/BookCard.module.css";
 import styled from "styled-components";
 
 import Loading from "../components/Loading";
-
-// useFetchBooks is a custom hook created in hooks folder 
-import {useFetchBooks ,useFilteredFetchBooks}from "../hooks/useFetch";
+// useFetchBooks is a custom hook created in hooks folder to get allbooks form DB 
+import {useFetchBooks }from "../hooks/useFetch";
 
 const Products = () => {
   
-  let allBooks = useFetchBooks("products");
+const allBooks = useFetchBooks("products");
 
-  const {filteredBooks} = useContext(SearchContext);
-  // const filteredBooks = useFilteredFetchBooks("products",`${searchQuery}`);
-  console.log(filteredBooks);
+const {filteredBooks}= useContext(SearchContext);
+  
 
-  allBooks = filteredBooks?filteredBooks:allBooks;
+console.log("filteredBooks in product",filteredBooks);
+// Targeting dynamically either filteredBooks or allBooks
+  const eitherFilteredBooksOrAllBooks = filteredBooks ? filteredBooks : allBooks ;
 
   return (
    
@@ -35,9 +35,9 @@ const Products = () => {
        
       >
         {/* bookcontainer style is creating cards using display : grid */}
-        {allBooks.length === 0 ?(<Loading/>)
+        { eitherFilteredBooksOrAllBooks  && eitherFilteredBooksOrAllBooks.length === 0 ?(<Loading/>)
         :
-        (allBooks.map((item) => (
+        (eitherFilteredBooksOrAllBooks && eitherFilteredBooksOrAllBooks.map((item) => (
            
           <div className={BookCardStyle.container} key={item._id}>
             <div className={BookCardStyle.card}>

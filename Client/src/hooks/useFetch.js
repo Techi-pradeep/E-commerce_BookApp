@@ -46,29 +46,7 @@ const useFetchOneBookByID = (id) => {
   return book;
 };
 
-// fetching filtered books according searchQuery
-const useFilteredFetchBooks = (endpoint, searchQuery) => {
-  console.log("usefilteredFetchBooks called ", searchQuery);
-  const [filteredBooks, setFilteredBooks] = useState("");
 
-  useEffect(() => {
-    filteredFetchBooks();
-  }, [searchQuery]);
-
-  const filteredFetchBooks = async () => {
-    try {
-      const response = await axios.get(
-        `${API_CONFIG.BASE_URL}/${endpoint}?search=${searchQuery}`
-      );
-      const filteredData = response.data;
-      setFilteredBooks(filteredData);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  return filteredBooks;
-};
 
 /** Fetching orderDetails from cluster or MongoDB database via a custom hook */
 const usefetchOrderDetails = (endpoint) => {
@@ -98,7 +76,6 @@ export {
   useFetchOneBookByID,
   useFetchBooks,
   usefetchOrderDetails,
-  useFilteredFetchBooks,
 };
 
 /** following code when we direct use
