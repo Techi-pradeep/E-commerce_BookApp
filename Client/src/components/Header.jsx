@@ -57,7 +57,9 @@ const Head = styled.header`
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
-  background-color: blue;
+  background-color: gray;
+  border-radius: 20%;
+
 }
 
 `;
