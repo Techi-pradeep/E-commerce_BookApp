@@ -19,13 +19,16 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 
 // CORS Policy  - used for connecting backend to frontend smoothly---avoiding errors while connecting
-app.use(
-  cors({
-    origin: 'https://creative-piroshki-9c860e.netlify.app', // Replace with your frontend domain
-    methods: ['GET', 'POST'], // Specify the allowed HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed request headers
-  })
-);
+app.use(cors());
+
+
+// app.use(
+//   cors({
+//     origin: 'https://creative-piroshki-9c860e.netlify.app', // Replace with your frontend domain
+//     methods: ['GET', 'POST'], // Specify the allowed HTTP methods
+//     allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed request headers
+//   })
+// );
 
 // solving error in new version
 import mongoose from "mongoose";
@@ -62,6 +65,15 @@ axios is package which here is hitting the backend route{What to Show}  and used
         const data = response.data;
  */
 
+// Added for render
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.resolve("client", "dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve("client", "dist", "index.html"));
+  });
+}
+
+
 
 const start = async () => {
   try {
@@ -74,3 +86,4 @@ const start = async () => {
   }
 };
 start();
+
