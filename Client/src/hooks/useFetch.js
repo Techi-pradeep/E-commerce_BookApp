@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { API_CONFIG } from "../config.js";
+import { API_CONFIG } from "../config";
 
 /**Fetching all Items from cluster */
 const useFetchBooks = (endpoint) => {

@@ -65,7 +65,7 @@ const LogIn = () => {
     setAuthUser(result.user);
     if (result.message && result.message==="User signed in successfully" ) {
       // If login is successful, set the authenticated state to true
-      toast.success("User Login in successfully");
+      // toast.success("User Login in successfully");
       login();
       /**setTimeout logic runs after some time so that react toastify can show message */
       setTimeout(() =>{ navigate("/home")}, 4000);

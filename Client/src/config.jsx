@@ -1,9 +1,10 @@
-export const API_CONFIG = {
-  // BASE_URL: "https://giddy-attire-bass.cyclic.app",
-  /**Before deployin on cyclic */
+ const API_CONFIG = {
+  /*  mern project used locally--Development phase ---PORT= Same Backend PORT */
+  BASE_URL: "http://localhost:8000",
 
-  // for render and development time
-  BASE_URL: "http://localhost:8080",
+    /*   Deploying backend  on cyclic or render  */
+  // BASE_URL: "https://giddy-attire-bass.cyclic.app",
+  // BASE_URL: "https://my-mern-app.onrender.com/api",
 };
 
-// BASE_URL: "https://my-api.com",
+export {API_CONFIG};

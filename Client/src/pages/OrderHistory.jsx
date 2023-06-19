@@ -12,7 +12,7 @@ const OrderHistory = () => {
   return (
 <>
      <OrderHistoryContainer>
-      <h2 style={{ textAlign: "center", color: "#B988C1" }}>Order History</h2>
+      <h2 style={{ textAlign: "center", color: "#B988C1" }}>Previous Order History</h2>
       {/* orderedItems && ---avoiding null error */}
       {orderedItems && orderedItems.length === 0 ? (
         <NoOrderHistory />
