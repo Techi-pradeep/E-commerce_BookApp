@@ -4,7 +4,7 @@
 
     /*   Deploying backend  on cyclic or render  */
   // BASE_URL: "https://giddy-attire-bass.cyclic.app",
-  // BASE_URL: "https://my-mern-app.onrender.com/api",
+  // BASE_URL: "https://bookstore-v34j.onrender.com/",
 };
 
 export {API_CONFIG};

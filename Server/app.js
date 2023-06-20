@@ -65,7 +65,7 @@ app.use("/", User);
 // =============================================================--------------------
 /*--------------------------Bridging frontend to backend------------------------
 axios is package which here is hitting the backend route{What to Show}  and used following code in frontend{Where to show} for using SideEffects by useEffect Hook
- const response = await axios.get("http://localhost:3046/products");
+ const response = await axios.get("http://localhost:8000/products");
         const data = response.data;
  */
 
@@ -74,9 +74,9 @@ axios is package which here is hitting the backend route{What to Show}  and used
 package.json------->"build": "npm install"  
 */
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.resolve("client", "dist")));
+  app.use(express.static(path.resolve("..","client", "dist")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve("client", "dist", "index.html"));
+    res.sendFile(path.resolve("..","client", "dist", "index.html"));
   });
 }
 
