@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const OrderHistory = () => {
   const { userId } = useParams();
-  const orderedItems = usefetchOrderDetails(`api/orderDetails/${userId}`);
+  const orderedItems = usefetchOrderDetails(`orderDetails/${userId}`);
   console.log(orderedItems);
   return (
 <>

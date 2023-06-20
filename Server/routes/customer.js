@@ -12,13 +12,13 @@ const router = express.Router();
 //   res.status(200).json({ message: 'Protected route accessed successfully', user });
 // });
 
-router.post("/signUp", UserController.signUp);
-router.post("/login", UserController.logIn);
+router.post("/api/signUp", UserController.signUp);
+router.post("/api/login", UserController.logIn);
 
-router.get("/products", ProductController.books);
+router.get("/api/products", ProductController.books);
 
-router.post("/createOrder", PaymentController.createOrder);
-router.post("/paymentSuccess", PaymentController.processPaymentSuccess);
+router.post("/api/createOrder", PaymentController.createOrder);
+router.post("/api/paymentSuccess", PaymentController.processPaymentSuccess);
 
 router.get("/api/orderDetails/:userId", OrderController.getOrderDetails)
 

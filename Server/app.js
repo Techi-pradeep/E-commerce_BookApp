@@ -72,11 +72,12 @@ axios is package which here is hitting the backend route{What to Show}  and used
 /* -Deploying MERN project --Server need to serve the static files(html,css,js) to the client via index.html {main file of react applciation}
 .env file -------->  NODE_ENV = "production"
 package.json------->"build": "npm install"  
+// following code Deploy forntend and backend both by -----render
 */
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.resolve("..","client", "dist")));
+  app.use(express.static(path.resolve("..","Client", "dist")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve("..","client", "dist", "index.html"));
+    res.sendFile(path.resolve("..","Client", "dist", "index.html"));
   });
 }
 
