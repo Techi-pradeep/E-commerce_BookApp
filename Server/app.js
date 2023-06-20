@@ -9,7 +9,7 @@ import path from "path";
 // import session from "express-session";
 
 
-import connectDB from "./config/connectdb.js";
+// import connectDB from "./config/connectdb.js";
 import User from "./routes/customer.js";
 
 const app = express();
@@ -43,7 +43,16 @@ app.use(express.urlencoded({ extended: true }));
 // }));
 
 // Database Connection
+const connectDB = async () => {
+  console.log("conntecting to db....");
+  await mongoose.connect(MONGODB_URL, {
+    //   useNewUrlParser:true,
+    //   useUnifiedTopology:true,
+  });
+  console.log("Connected Successfully..");
+};
 connectDB(MONGODB_URL);
+
 // registering all routes
 app.use("/", User);
 
